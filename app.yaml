@@ -1,0 +1,12 @@
+runtime: python37
+
+handlers:
+# Matches requests to /images/... to files in static/images/...
+- url: /media/
+  static_dir: static/media/
+
+- url: /.*
+  script: auto
+
+env_variables:
+  DJANGO_SETTINGS_MODULES : gallery.settings 

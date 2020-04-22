@@ -1,0 +1,1 @@
+from gallery.wsgi import application as app

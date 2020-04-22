@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gallery</title>
+	<style type="text/css">
+		.heading{
+			margin: auto;
+			width: 100%;
+			height: 60px;
+			background-color: black;
+		}
+		.hleft{
+			margin: auto;
+			float: left;
+			padding: 1.2%;
+			margin-left: 10px;
+			margin-top: 5px;
+			width: 70px;
+		}
+		.hright{
+			margin: auto;
+			padding: 1.2%;
+			float: right;
+			margin-top: 5px;
+			margin-right: 10px;
+			width: 70px;
+		}
+		
+		a{
+			font-size:20px;
+			text-decoration: none;
+			text-shadow: 8px 8px 8px black;
+			color: white;
+		}
+		.hle{
+			margin: auto;
+			float: left;
+			padding: 0.4%;
+		}
+		
+		.images{
+			margin: auto;
+			float: left;
+			height: 180px;
+			width: 100%;
+			background-color: red;
+			margin: 1%;
+		}
+		.leftbody{
+			margin: auto;
+			float: left;
+			width: 13%;
+			padding: 1%;
+			background-color: #d9d9d9;
+			margin-right: 1%;
+			box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+		}
+		.rightbody{
+			margin: auto;
+			float: left;
+			width: 80%;
+			padding: 1%;
+			background-color: #d9d9d9;
+			box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+		}
+		.body{
+			margin: auto;
+			height: auto;
+			width: auto;
+			margin-top: 10px;
+		}
+		.sidebar{
+			margin: auto;
+			margin-left:5px;
+			font-size: 20px; 
+		}
+		.remove{
+			position: absolute;
+			float: left;
+
+		}
+		.remove_icon{
+			margin: auto;
+			float: left;
+			width: 17%;
+			height:auto;
+			margin-left: 7.5px;
+			padding: 1%;
+		}
+		.myclass{
+			display: none; /* Hidden by default */
+  			position: fixed; /* Stay in place */
+  			z-index: 1; /* Sit on top */
+  			left: 0;
+  			top: 0;
+  			width: 100%; /* Full width */
+  			height: 100%; /* Full height */
+  			overflow: auto; /* Enable scroll if needed */
+  			background-color: rgb(0,0,0); /* Fallback color */
+  			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		}
+		.modal-content {
+  			background-color: #fefefe;
+  			margin: auto;
+  			padding: 20px;
+  			border: 1px solid #888;
+  			width: 30%;
+  			margin-top: 100px;
+	}
+	.butt{
+			background-color: #e60000;
+			width: 100%;
+			height: 100%;
+			padding: 1%;
+		}
+		.errormsg{ 
+			display: none;/* Hidden by default */
+  			position: fixed; /* Stay in place */
+  			z-index: 1; /* Sit on top */
+  			right: 0;
+  			left: 10;
+  			top: 10;
+  			float: right;
+  			width: auto; /* Full width */
+  			height: auto; /* Full height */
+  			background-color: red; /* Fallback color */ 
+  			border-radius:  30px 5px 5px 30px;
+  			padding: 1%;
+		}
+		}
+	</style>
+	<script type="text/javascript">
+		function upload() {
+			modal=document.getElementById('modal');
+			modal.style.display="block";
+		}
+		window.onclick = function(event) {
+  			if (event.target == modal) {
+    			modal.style.display = "none";
+	  		}
+		}
+		function errorcheck() {
+			if ('{{error}}'.length>0) {
+				document.getElementById('msg').style.display='block';
+				setTimeout(function error_timeout() {
+		document.getElementById('msg').style.display='none';	
+		}, 6000);
+			}
+		
+	}
+	</script>
+</head>
+<body onload="errorcheck()">
+<div class="heading">
+		<a href="{% url 'main_flower' %}" class="hle"><img src="/media/icons/App_logo.png" style="width: 120px;height: 50px;"></a>
+		<a href="{% url 'main' 'Tulip' %}" class="hleft"><b>Home</b></a>
+		<a href="javascript:upload()" class="hleft"><b>Upload</b></a>
+		<!--<a href="" class="hright"><b>SignUp</b></a>
+		<a href="" class="hright"><b>Login</b></a>-->
+</div>
+<div class="body">
+
+	<div class="errormsg" id="msg">
+		<b style="color: white;">{{error}}</b>
+	</div>
+	<p id="demo"></p>
+	<div class="leftbody">
+		<center><p><b style="font-size: 25px;">Flower List</b></p></center><hr>
+			<button class="butt"><a href="{% url 'main' 'Tulip' %}" class="sidebar" >Tulip</a></button>
+			<button class="butt"><a href="{% url 'main' 'Daffodil' %}" class="sidebar" >Daffodil</a></button>
+			<button class="butt"><a href="{% url 'main' 'Poppy' %}" class="sidebar" >Poppy</a></button>
+			<button class="butt"><a href="{% url 'main' 'Sunflower'%}" class="sidebar" >Sunflower</a></button>
+			<button class="butt"><a href="{% url 'main' 'Bluebell' %}" class="sidebar" >Bluebell</a></button>
+			<button class="butt"><a href="{% url 'main' 'Rose' %}" class="sidebar" >Rose</a></button>
+			<button class="butt"><a href="{% url 'main' 'Snowdrop' %}" class="sidebar" >Snowdrop</a></button>
+			<button class="butt"><a href="{% url 'main' 'Cherryblossom' %}" class="sidebar" >Cherry blossom</a></button>
+			<button class="butt"><a href="{% url 'main' 'Orchid' %}" class="sidebar" >Orchid</a></button>
+			<button class="butt"><a href="{% url 'main' 'Iris' %}" class="sidebar" >Iris</a></button>
+			<button class="butt"><a href="{% url 'main' 'Peony' %}" class="sidebar" >Peony</a></button>
+			<button class="butt"><a href="{% url 'main' 'Chrysanthemum' %}" class="sidebar" >Chrysanthemum</a></button>
+			<button class="butt"><a href="{% url 'main' 'Geranium' %}" class="sidebar" >Geranium</a></button>
+			<button class="butt"><a href="{% url 'main' 'Lily' %}" class="sidebar" >Lily</a></button>
+			<button class="butt"><a href="{% url 'main' 'Lotus' %}" class="sidebar" >Lotus</a></button>
+			<button class="butt"><a href="{% url 'main' 'Waterlily' %}" class="sidebar" >Water lily</a></button>
+			<button class="butt"><a href="{% url 'main' 'Dandelion' %}" class="sidebar" >Dandelion</a></button>
+			<button class="butt"><a href="{% url 'main' 'Hyacinth' %}" class="sidebar" >Hyacinth</a></button>
+			<button class="butt"><a href="{% url 'main' 'Daisy' %}" class="sidebar" >Daisy</a></button>
+			<button class="butt"><a href="{% url 'main' 'Crocus' %}" class="sidebar" >Crocus</a></button>
+	</div>
+	</div>
+
+	<div class="rightbody">
+		<p><b style="font-size: 30px;margin-left: 10px; ">{{name}}</b></p>
+		{% load static %}
+		{%for images in file%}
+		<div class="remove_icon">
+			<a href="{% url 'fullsize' images.id %}">
+		<img src="{{images.image.url}}" class="images"></a>
+		<div class="remove">
+			
+		<a href="{% url 'remove' images.id name %}">
+		<img src="/media/icons/delete.png"/></a></div></div>
+		{%endfor%}
+	</div>
+	<div class="myclass" id="modal">
+		<div class="modal-content">
+		<form action="/upload/{{name}}" method="POST" enctype="multipart/form-data">
+			<p><b style="font-size: 25px; margin-left: 10px;">Upload image</b></p><hr>
+			{% csrf_token %}
+			{{ form.as_p }}
+			<br>
+			<input type="submit" name="Upload">
+		</form>
+	</div>
+	</div>
+</div>
+</body>
+</html>
